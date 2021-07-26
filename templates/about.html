@@ -7,4 +7,13 @@
 {% else %}
     <h3>Hello my name is {{name}}!</h3>
 {% endif %}
+
+<img src="{{ url_for('static', filename='woof.jpg') }}"/>
+
+<ul>
+    {% for food in list_of_food %}
+    <li class="food_list">{{food}}</li>
+    {% endfor %}
+</ul>
+
 {% endblock %}
