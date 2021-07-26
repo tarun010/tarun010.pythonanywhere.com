@@ -1,1 +1,10 @@
-hello my name is Tarun
+{% extends "layout.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+<h1>About Page</h1>
+{% if name is none %}
+    <h2>I don't know who I am</h2>
+{% else %}
+    <h3>Hello my name is {{name}}!</h3>
+{% endif %}
+{% endblock %}
