@@ -1,11 +1,13 @@
 from flask import Flask, render_template
 import requests
-
+import decouple
 
 user_name = "Tarun"
 
 github_projects_url = "https://api.github.com/users/tarun010/repos"
 projects_from_github = requests.get(github_projects_url).json()
+
+contact = decouple.config("CONTACT_FORM_API", default=None)
 
 projects = []
 
@@ -38,7 +40,7 @@ def about_page():
 
 @app.route("/contact")
 def contact_page():
-    return render_template("contact.html", name=user_name)
+    return render_template("contact.html", name=user_name, api=contact)
 
 @app.route("/projects")
 def project_page():

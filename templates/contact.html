@@ -2,4 +2,29 @@
 {% block title %}Contact{% endblock %}
 {% block content %}
 <h1>Contact Page</h1>
+
+<form action="{{api}}" method="POST">
+    <div>
+        <label>
+            Your Name:
+            <input type="text" name="name" placeholder="Name">
+        </label>
+    </div>
+    <div>
+        <label>
+            Your Email:
+            <input type="email" name="_replyto" placeholder="Email">
+        </label>
+    </div>
+    <div>
+        <label>
+            Your Message:
+            <textarea name="message" placeholder="Your Message" rows="5"></textarea>
+        </label>
+    </div>
+
+  <!-- your other form fields go here -->
+
+  <button type="submit">Send</button>
+</form>
 {% endblock %}
