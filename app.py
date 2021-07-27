@@ -34,7 +34,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def about_page():
-    return render_template("about.html", name=user_name, list_of_food=list_of_food)
+    return render_template("about.html", name=user_name)#, list_of_food=list_of_food)
 
 @app.route("/contact")
 def contact_page():
