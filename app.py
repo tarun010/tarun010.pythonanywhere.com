@@ -5,6 +5,9 @@ from flask import Flask, render_template
 import requests
 import decouple
 import markdown
+import sqlite3
+
+db_connection = sqlite3.connect("./database.db")
 
 user_name = "Tarun"
 
@@ -55,17 +58,15 @@ print(projects)
 
 
 
-#list_of_food = [
-#    "Tea",
-#    "Apples",
-#    "Ramen"
-#]
+list_of_food = []
+
+
 
 app = Flask(__name__)
 
 @app.route("/")
 def about_page():
-    return render_template("about.html", name=user_name)#, list_of_food=list_of_food)
+    return render_template("about.html", name=user_name, list_of_food=list_of_food)
 
 @app.route("/blog")
 def blog_list_page():
@@ -80,8 +81,6 @@ def blog_entry_page(post_name):
             return render_template("blog_entry.html", name=user_name, post=post)
     
     return "Blog post not found!"
-        
-
 
 @app.route("/projects")
 def project_page():
@@ -90,3 +89,8 @@ def project_page():
 @app.route("/contact")
 def contact_page():
     return render_template("contact.html", name=user_name, api=contact)
+
+@app.route("/food/add/<name>")
+def add_food(name):
+    list_of_food.append(name)
+    return "Added entry"
