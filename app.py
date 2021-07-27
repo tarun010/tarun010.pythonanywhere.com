@@ -1,9 +1,10 @@
 import os
 from pathlib import Path
-
+from datetime import datetime
 from flask import Flask, render_template
 import requests
 import decouple
+import markdown
 
 user_name = "Tarun"
 
@@ -13,16 +14,30 @@ projects_from_github = requests.get(github_projects_url).json()
 contact = decouple.config("CONTACT_FORM_API", default=None)
 
 projects = []
+blog_posts = []
+name_to_blog_posts = {}
 
 with os.scandir("blog") as it:
     for entry in it:
         if entry.name.endswith(".md") and entry.is_file():
-            print(entry.name, entry.path)
 
+            raw_post_date, post_name = entry.name.split("_")
+            post_date = datetime.strptime(raw_post_date, "%Y-%m-%d")
+            post_name = post_name.rstrip(".md")
+
+ #           print(post_date, post_name)
+            
             post_data = Path(entry.path).read_text()
-            print(post_data)
+            html = markdown.markdown(post_data)
 
-exit(0)
+            blog_posts.append({
+                "name": post_name,
+                "date": post_date,
+                "html": html
+            })
+
+#print(blog_posts)
+#exit(0)
 
 
 for project in projects_from_github:
@@ -54,11 +69,18 @@ def about_page():
 
 @app.route("/blog")
 def blog_list_page():
-    return render_template("blog_list.html", name=user_name)
+    return render_template("blog_list.html", name=user_name, blog_posts=blog_posts)
 
 @app.route("/blog/<post_name>")
 def blog_entry_page(post_name):
-    return render_template("blog_entry.html", name=user_name, post_name=post_name)
+
+    for post in blog_posts:
+        print(post_name, post["name"])
+        if post_name == post["name"]:
+            return render_template("blog_entry.html", name=user_name, post=post)
+    
+    return "Blog post not found!"
+        
 
 
 @app.route("/projects")

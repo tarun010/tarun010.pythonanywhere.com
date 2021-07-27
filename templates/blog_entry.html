@@ -1,6 +1,13 @@
 {% extends "layout.html" %}
-{% block title %}{{ post_name }}{% endblock %}
+{% block title %}{{ post['name'] }}{% endblock %}
 {% block content %}
-<h1>{{ post_name }}</h1>
+<h1>{{ post['name'] }}</h1>
+
+<p>{{ post["date"].strftime("%d %B %Y") }}</p>
+
+<hr/>
+<br/>
+
+{{ post['html'] | safe }}
 
 {% endblock %}
