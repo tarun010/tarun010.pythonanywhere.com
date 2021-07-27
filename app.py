@@ -24,11 +24,11 @@ print(projects)
 
 
 
-list_of_food = [
-    "Tea",
-    "Apples",
-    "Ramen"
-]
+#list_of_food = [
+#    "Tea",
+#    "Apples",
+#    "Ramen"
+#]
 
 app = Flask(__name__)
 
