@@ -4,9 +4,9 @@
 <h1>Projects Page</h1>
 
 <ul class="projects">
-    {% for project in projects %}
-    <a href="{{project["url"]}}">
-        <li>{{project["name"]}}</li>
+    {% for project in projects %} 
+    <a href="{{project['url']}}">
+        <li>{{project["name"]}}: {{project["desc"]}}</li>
     </a>
     {% endfor %}
 </ul>
