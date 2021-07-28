@@ -10,9 +10,12 @@
 
 <img src="{{ url_for('static', filename='woof.jpg') }}"/>
 
-<ul>
+<hr/>
+<br/>
+<h3>Random Database List</h3>
+<ul class="food_list">
     {% for food in list_of_food %}
-    <li class="food_list">{{food}}</li>
+    <li>{{ food[0] }}</li>
     {% endfor %}
 </ul>
 

@@ -9,6 +9,18 @@ import sqlite3
 
 db_connection = sqlite3.connect("./database.db")
 
+db_cursor = db_connection.cursor()
+db_cursor.execute(
+    """
+        CREATE TABLE IF NOT EXISTS food (
+            name TEXT,
+            PRIMARY KEY (name)
+        )
+    """
+)
+db_cursor.close()
+db_connection.commit()
+
 user_name = "Tarun"
 
 github_projects_url = decouple.config("GITHUB_API", default=None)
@@ -66,6 +78,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def about_page():
+    db_cursor = sqlite3.connect("./database.db").cursor()
+    db_cursor.execute("SELECT * FROM food")
+    list_of_food = db_cursor.fetchall()
     return render_template("about.html", name=user_name, list_of_food=list_of_food)
 
 @app.route("/blog")
@@ -92,5 +107,11 @@ def contact_page():
 
 @app.route("/food/add/<name>")
 def add_food(name):
-    list_of_food.append(name)
-    return "Added entry"
+    db_connection = sqlite3.connect("./database.db")
+    db_cursor = db_connection.cursor()
+    db_cursor.execute(
+        "INSERT INTO food VALUES (:name)",
+        {"name": name},
+    )
+    db_connection.commit()
+    return f"Added food '{name}'"
