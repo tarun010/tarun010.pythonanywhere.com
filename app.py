@@ -83,11 +83,11 @@ def about_page():
     list_of_food = db_cursor.fetchall()
     return render_template("about.html", name=user_name, list_of_food=list_of_food)
 
-@app.route("/blog")
+@app.route("/blog/")
 def blog_list_page():
     return render_template("blog_list.html", name=user_name, blog_posts=blog_posts)
 
-@app.route("/blog/<post_name>")
+@app.route("/blog/<post_name>/")
 def blog_entry_page(post_name):
 
     for post in blog_posts:
@@ -97,11 +97,11 @@ def blog_entry_page(post_name):
     
     return "Blog post not found!"
 
-@app.route("/projects")
+@app.route("/projects/")
 def project_page():
     return render_template("projects.html", name=user_name, projects=projects)
 
-@app.route("/contact")
+@app.route("/contact/")
 def contact_page():
     return render_template("contact.html", name=user_name, api=contact)
 
