@@ -23,7 +23,8 @@ db_connection.commit()
 
 user_name = "Tarun"
 
-github_projects_url = decouple.config("GITHUB_API", default=None)
+#github_projects_url = decouple.config("GITHUB_API", default=None)
+github_projects_url = "https://api.github.com/users/tarun010/repos"
 projects_from_github = requests.get(github_projects_url).json()
 
 contact = decouple.config("CONTACT_FORM_API", default=None)
