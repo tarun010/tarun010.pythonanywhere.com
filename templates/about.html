@@ -1,22 +1,42 @@
 {% extends "layout.html" %}
 {% block title %}About{% endblock %}
 {% block content %}
-<h1>About Page</h1>
-{% if name is none %}
-    <h2>I don't know who I am</h2>
-{% else %}
-    <h3>Hello my name is {{name}}!</h3>
-{% endif %}
 
-<img src="{{ url_for('static', filename='woof.jpg') }}"/>
+<h1>About</h1>
+<div class="about center-content">
 
-<hr/>
-<br/>
-<h3>Random Database List</h3>
-<ul class="food_list">
-    {% for food in list_of_food %}
-    <li>{{ food[0] }}</li>
-    {% endfor %}
-</ul>
+    <div class="avatar">
+        <img src="{{ url_for('static', filename='img-avatar.jpg') }}" alt="Avatar"/>
+    </div>
+
+    <section class="main">
+
+        <div class="main-text">
+
+            {% if name is none %}
+            <h2>I don't know who I am</h2>
+            {% else %}
+            <h2>Hi, my name is {{name}}.</h2>
+            {% endif %}
+        </div>
+        
+        <div class="logos">
+            <div class="skewed-pic" id="javascript"></div>
+            <div class="skewed-pic" id="cpp"></div>
+            <div class="skewed-pic" id="python"></div>
+            <div class="skewed-pic" id="java"></div>
+        </div>
+        
+        <!--h3>Random Database List</h3>
+            <ul class="food_list">
+                {% for food in list_of_food %}
+                <li>{{ food[0] }}</li>
+                {% endfor %}
+            </ul-->
+            
+    </section>
+
+</div>
+
 
 {% endblock %}

@@ -4,33 +4,14 @@
         <meta charset="utf-8"/>
         <title>{% block title %}{% endblock %} | {{ name }}</title>
         <meta name="author" content="{{ name }}" />
-        <meta name="description" content="hello, world" />
-        <link rel="stylesheet" href="styles.css">
-        <style>
-            body{
-                color: rgb(15, 5, 151);
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            }
-
-            .food_list{
-                padding: 2rem;
-                font-family: cursive;
-                font-size: 2rem;
-                border: 2px solid red;
-            }
-
-            .projects{
-                border: 1px dashed green;
-            }
-
-            .projects li {
-                margin: 2rem;
-            }
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='new-styles.css') }}">
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous">
     </head>
 
     <body>
         <nav>
+            <p>{{ name }}</p>
             <ul>
                 <a href="/">
                     <li>About</li>
@@ -46,6 +27,20 @@
                 </a>
             </ul>
         </nav>
-        {% block content %}{% endblock %}
+        
+        <section class="content">
+            <hr class="line1">
+            {% block content %}{% endblock %}
+            
+            <div class="footer">
+                <!-- Add icon library -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <!-- Add font awesome icons -->
+                <a href="mailto:tarun010@zohomail.in" class="fa fa-envelope fa-lg" ></a>
+                <a href="https://github.com/tarun010" class="fa fa-github fa-lg"></a>
+                <a href="https://twitter.com/_tarun010" class="fa fa-twitter fa-lg"></a>
+                <a href="https://www.linkedin.com/in/tarun-s-93b527207/" class="fa fa-linkedin fa-lg"></a>
+            </div>
+        </section>
     </body>
 </html>

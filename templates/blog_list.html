@@ -3,10 +3,12 @@
 {% block content %}
 <h1>Blog</h1>
 
-{% for post in blog_posts %}
+<div class="blog-list">    
+    {% for post in blog_posts %}
     <a href="/blog/{{ post['name'] }}">
         <li>{{ post["name"] }}: {{ post["date"].strftime("%d %B %Y") }}</li>
     </a>
-{% endfor %}
+    {% endfor %}
+</div>
 
 {% endblock %}
