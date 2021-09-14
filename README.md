@@ -1,5 +1,5 @@
-# flask-website
-Responsive portfolio website that uses the Flask micro web framework.
+# tarun010.pythonanywhere.com
+Responsive portfolio website that uses the Flask micro web framework. Blog web application and contact form also built within.
 
 <br/>
 
