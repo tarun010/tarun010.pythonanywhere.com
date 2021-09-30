@@ -59,12 +59,12 @@ for project in projects_from_github:
     name = project["name"]
     desc = project["description"]
     url = project["html_url"]
-
-    projects.append({
-        "name": name,
-        "desc": desc,
-        "url": url
-    })
+    if (name != "tarun010"):
+        projects.append({
+            "name": name,
+            "desc": desc,
+            "url": url
+        })
 
 print(projects)
 
