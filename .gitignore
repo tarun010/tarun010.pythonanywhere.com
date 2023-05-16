@@ -8,3 +8,6 @@ venv
 
 # db
 *.db
+
+#mac
+.DS_Store
