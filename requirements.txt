@@ -1,4 +1,4 @@
-Flask==2
+Flask==2.2.5
 python-decouple==3.4
 requests==2.25
 markdown==3.3
