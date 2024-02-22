@@ -1,4 +1,4 @@
-# [tarun010.pythonanywhere.com](https://tarun010.pythonanywhere.com)  - Go to website
+# [tarun010.pythonanywhere.com](https://tarun010.pythonanywhere.com)  <- Go to website
 - August 2021:
     - Responsive portfolio website that uses the Flask micro web framework. Blog application and contact form also built within. Uses GitHub REST API to display public repositories as projects.
 
